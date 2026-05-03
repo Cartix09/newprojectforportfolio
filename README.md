@@ -16,12 +16,18 @@ Deploys as a static site to GitHub Pages at `/newprojectforportfolio/`.
 All copy, projects, experience, skills, education, certificates, languages, and
 links live in **`src/data/content.js`**. Edit that file — no HTML changes needed.
 
-Replace these placeholders before deploying:
+Main portfolio content can be updated in `src/data/content.js`.
 
-- `links.email` — set your real email (currently `hello@example.com`)
-- `links.linkedin` — set your real LinkedIn URL
-- `projects[].name === 'MagNexus'` — fill in description/role when ready
-- `education[1]` — fill in Master's details when ready
+This includes:
+- profile text
+- links
+- about section
+- featured projects
+- experience
+- skills
+- education
+- certificates
+- languages
 
 ## Run locally
 
