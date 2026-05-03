@@ -2,123 +2,243 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mursal Hajiyev - Portfolio</title>
+    <meta name="theme-color" content="#05060a" />
+
+    <title>Mursal Hajiyev — Data Analyst · AI & Digital Product Builder</title>
+
+    <meta
+      name="description"
+      content="Mursal Hajiyev — Data Analyst, AI and digital product builder based in Warsaw. Portfolio featuring machine learning, computer vision, e-commerce analytics, web projects, startup work, and data-driven tools."
+    />
+    <meta name="author" content="Mursal Hajiyev" />
+    <meta
+      name="keywords"
+      content="Mursal Hajiyev, Data Analyst, AI, Machine Learning, Python, SQL, Computer Vision, YOLOv8, Web Analytics, Portfolio, Warsaw"
+    />
+
+    <meta property="og:title" content="Mursal Hajiyev — Data Analyst · AI & Digital Product Builder" />
+    <meta
+      property="og:description"
+      content="Interactive 3D portfolio showcasing data analysis, AI, computer vision, e-commerce analytics, web projects, and startup/product work."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cartix09.github.io/newprojectforportfolio/" />
+
+    <link rel="canonical" href="https://cartix09.github.io/newprojectforportfolio/" />
   </head>
+
   <body>
-    <canvas id="bg"></canvas>
-    <div id="app"></div>
-    <main>
-      <header>
-        <h1>Mursal Hajiyev</h1>
-        <p>🚀 Welcome to my website!</p>
-      </header>
+    <!-- Three.js layers -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
-      <blockquote>
-        <p>I like making stuff and putting it on the internet</p>
-      </blockquote>
+    <!-- Custom cursor -->
+    <div id="cursor" aria-hidden="true">
+      <div class="cursor-dot"></div>
+      <div class="cursor-ring"></div>
+    </div>
 
-      <section>
-        <h2>📜 About Me</h2>
-        <p>
-          I am an enthusiastic AI major who has graduated from Kozminski University. Mainly focused on Data Analysis and Machine Learning. I have completed courses in Data Structures, Algorithms, and Statistical Analysis. Conducted a capstone project using Python to analyze large datasets. Eager to apply my skills in a Data Analyst role.
-        </p>
+    <!-- Top nav -->
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-brand" href="#top">
+        <span class="brand-mark">MH</span>
+        <span class="brand-text">Mursal Hajiyev</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </nav>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero" id="hero">
+        <div class="hero-grid"></div>
+
+        <div class="hero-inner">
+          <p class="eyebrow">
+            <span class="pulse-dot"></span>
+            <span data-content="status"></span>
+          </p>
+
+          <h1 class="hero-title">
+            <span class="line"><span data-content="name"></span></span>
+          </h1>
+
+          <p class="hero-tagline" data-content="tagline"></p>
+          <p class="hero-intro" data-content="intro"></p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects" data-cursor="hover">
+              <span>View Projects</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12h14M13 5l7 7-7 7"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              href="https://github.com/Cartix09"
+              data-link="github"
+              target="_blank"
+              rel="noreferrer noopener"
+              data-cursor="hover"
+            >
+              GitHub
+            </a>
+
+            <a class="btn btn-ghost" href="#contact" data-cursor="hover">Contact</a>
+          </div>
+
+          <p class="hero-hint">
+            <span>Drag the shape</span>
+            <span class="hint-arrow">↘</span>
+          </p>
+        </div>
+
+        <div class="hero-meta">
+          <span data-content="location"></span>
+          <span class="dot-sep">•</span>
+          <span>scroll</span>
+          <span class="scroll-bar"><span class="scroll-bar-inner"></span></span>
+        </div>
       </section>
 
-      <section>
-        <h2>🎓 Education</h2>
-        <h3>Kozminski University</h3>
-        <p>Bachelors in Business Management and Artificial Intelligence</p>
-        <p>GPA: 4.7/5 (10/2021 - 06/2024)</p>
+      <!-- ABOUT -->
+      <section class="section about" id="about">
+        <header class="section-head">
+          <span class="section-num">01</span>
+          <h2 class="section-title">About</h2>
+        </header>
+        <div class="about-body" data-content="about"></div>
       </section>
 
-      <section>
-        <h2>💼 Work Experience</h2>
-
-        <h3>Project Management Intern - Bizim Sklep (Bizim.pl)</h3>
-        <p>10/2023 - 02/2024</p>
-        <ul>
-          <li>Led the development and launch of Bizim.pl, ensuring alignment with business goals through effective project management.</li>
-          <li>Analyzed customer data to improve website design and functionality, enhancing user engagement.</li>
-          <li>Conducted thorough data cleaning and maintenance, ensuring data integrity and quality.</li>
-          <li>Collaborated closely with the client to capture needs and vision, ensuring the project met all specifications.</li>
-          <li>Implemented a user-friendly interface and e-commerce capabilities, including a payment system integration.</li>
-          <li>Provided ongoing support and enhancements, demonstrating responsibility and independence in managing the project lifecycle.</li>
-          <li>Actively engaged in promotional efforts targeting potential candidates, including participation in university events like Open Days and Webinars.</li>
-          <li>Provided essential support throughout the candidate application process, ensuring a smooth and efficient experience.</li>
-          <li>Assisted in organizing university events and maintaining a welcoming environment for prospective students.</li>
-        </ul>
-
-        <h3>Student Ambassador - Kozminski University</h3>
-        <p>02/2023 - Present</p>
-        <ul>
-          <li>Provided essential support throughout the candidate application process, ensuring a smooth and efficient experience.</li>
-          <li>Assisted in organizing university events and maintaining a welcoming environment for prospective students.</li>
-        </ul>
+      <!-- PROJECTS -->
+      <section class="section projects" id="projects">
+        <header class="section-head">
+          <span class="section-num">02</span>
+          <h2 class="section-title">Featured Projects</h2>
+        </header>
+        <div class="projects-grid" data-content="projects"></div>
       </section>
 
-      <section>
-        <h2>🛠️ Skills</h2>
-        <h3>Technical Skills</h3>
-        <ul>
-          <li>Python, SQL, GIT, Excel</li>
-          <li>PowerBi</li>
-          <li>R studio</li>
-          <li>Data Visualization (Matplotlib, Seaborn)</li>
-          <li>Cloud Computing</li>
-          <li>Big Data (Hadoop), DevOps Principles</li>
-          <li>Agile and Scrum methodologies</li>
-          <li>Familiarity with PyTorch/TensorFlow</li>
-        </ul>
-
-        <h3>Soft Skills</h3>
-        <ul>
-          <li>Attention to Detail</li>
-          <li>Problem-solving skills</li>
-          <li>Independence</li>
-          <li>Responsibility</li>
-          <li>Strong Communication and Collaboration abilities</li>
-        </ul>
+      <!-- EXPERIENCE -->
+      <section class="section experience" id="experience">
+        <header class="section-head">
+          <span class="section-num">03</span>
+          <h2 class="section-title">Experience</h2>
+        </header>
+        <ol class="experience-list" data-content="experience"></ol>
       </section>
 
-      <section>
-        <h2>🏆 Certificates</h2>
-        <ul>
-          <li>Google Big Data Query: Learned key elements of SQL knowledge</li>
-          <li>Datacamp: Achieved Shell, PowerBi, Scala, Python, R studio certificates</li>
-        </ul>
+      <!-- SKILLS -->
+      <section class="section skills" id="skills">
+        <header class="section-head">
+          <span class="section-num">04</span>
+          <h2 class="section-title">Skills</h2>
+        </header>
+        <div class="skills-grid" data-content="skills"></div>
       </section>
 
-      <section>
-        <h2>🌐 Languages</h2>
-        <ul>
-          <li>English: Native or Bilingual Proficiency</li>
-          <li>Turkish: Full Professional Proficiency</li>
-          <li>Azerbaijani: Native or Bilingual Proficiency</li>
-          <li>Russian: Professional Working Proficiency</li>
-        </ul>
+      <!-- EDUCATION -->
+      <section class="section education" id="education">
+        <header class="section-head">
+          <span class="section-num">05</span>
+          <h2 class="section-title">Education</h2>
+        </header>
+        <div class="education-grid" data-content="education"></div>
       </section>
 
-      <section>
-        <h2>📚 Extra Curricular Activities</h2>
-        <h3>Vice President, Kozminski Data Science Club</h3>
-        <p>10/2023 - Present</p>
-        <ul>
-          <li>Led strategic initiatives and events</li>
-          <li>Incorporated Data Science principles into business practices</li>
-          <li>Fostered collaboration across teams for impactful project execution and enhanced learning experiences</li>
-        </ul>
+      <!-- CERTIFICATES + LANGUAGES -->
+      <section class="section credentials" id="credentials">
+        <header class="section-head">
+          <span class="section-num">06</span>
+          <h2 class="section-title">Certificates &amp; Languages</h2>
+        </header>
+
+        <div class="credentials-grid">
+          <div class="panel">
+            <h3 class="panel-title">Certificates</h3>
+            <ul class="cert-list" data-content="certificates"></ul>
+          </div>
+
+          <div class="panel">
+            <h3 class="panel-title">Languages</h3>
+            <ul class="lang-list" data-content="languages"></ul>
+          </div>
+        </div>
       </section>
 
-      <blockquote>
-        <p>The best way out is always through <br>-Robert Frost</p>
-      </blockquote>
+      <!-- CONTACT -->
+      <section class="section contact" id="contact">
+        <header class="section-head">
+          <span class="section-num">07</span>
+          <h2 class="section-title">Contact</h2>
+        </header>
 
-      <blockquote>
-        <p>Thanks for visiting!</p>
-      </blockquote>
+        <div class="contact-body">
+          <p class="contact-cta">Let’s build something useful.</p>
+
+          <div class="contact-links">
+            <a
+              class="contact-link"
+              href="mailto:mursalhaciyev@gmail.com"
+              data-link="email"
+              data-cursor="hover"
+            >
+              <span class="contact-link-label">Email</span>
+              <span class="contact-link-value" data-link-text="email"></span>
+            </a>
+
+            <a
+              class="contact-link"
+              href="https://github.com/Cartix09"
+              data-link="github"
+              target="_blank"
+              rel="noreferrer noopener"
+              data-cursor="hover"
+            >
+              <span class="contact-link-label">GitHub</span>
+              <span class="contact-link-value">@Cartix09</span>
+            </a>
+
+            <a
+              class="contact-link"
+              href="https://www.linkedin.com/in/mursal-hajiyev/"
+              data-link="linkedin"
+              target="_blank"
+              rel="noreferrer noopener"
+              data-cursor="hover"
+            >
+              <span class="contact-link-label">LinkedIn</span>
+              <span class="contact-link-value">in/mursal-hajiyev</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Mursal Hajiyev</span>
+        <span>Built with Three.js · GSAP · Vite</span>
+      </footer>
     </main>
-    <script type="module" src="/main.js"></script>
+
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
