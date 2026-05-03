@@ -44,19 +44,53 @@ export function renderContent() {
   // Projects
   const projEl = $('[data-content="projects"]');
   if (projEl) {
-    projEl.innerHTML = projects.map((p, i) => `
-      <article class="project-card reveal" style="--card-accent:${p.accent}; transition-delay:${i * 0.08}s" data-cursor="hover">
-        <div class="project-head">
-          <h3 class="project-name">${escapeHtml(p.name)}</h3>
+    const VISIBLE = 6;
+    const cardsHtml = projects.map((p, i) => {
+      const extra = i >= VISIBLE ? ' is-extra' : '';
+      const link = p.url
+        ? `<a class="project-link" href="${escapeHtml(p.url)}" target="_blank" rel="noreferrer noopener" data-cursor="hover">Visit site
+             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+           </a>`
+        : '';
+      const type = p.type ? `<span class="project-type">${escapeHtml(p.type)}</span>` : `<span></span>`;
+      return `
+      <article class="project-card reveal${extra}" style="--card-accent:${p.accent}; transition-delay:${(i % VISIBLE) * 0.06}s" data-cursor="hover" data-section="projects">
+        <span class="project-accent" aria-hidden="true"></span>
+        <span class="project-mark" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+        <div class="project-meta-row">
+          ${type}
           <span class="project-year">${escapeHtml(p.year)}</span>
         </div>
+        <h3 class="project-name">${escapeHtml(p.name)}</h3>
         <p class="project-summary">${escapeHtml(p.summary)}</p>
-        <p class="project-role"><strong>Role —</strong> ${escapeHtml(p.role)}</p>
+        <p class="project-role"><strong>Role</strong> ${escapeHtml(p.role)}</p>
         <div class="project-tags">
           ${p.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}
         </div>
+        ${link}
       </article>
-    `).join('');
+    `;
+    }).join('');
+    projEl.innerHTML = cardsHtml;
+
+    // Show more button if needed
+    if (projects.length > VISIBLE) {
+      const moreWrap = document.createElement('div');
+      moreWrap.className = 'projects-more';
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = `Show all ${projects.length} projects`;
+      btn.setAttribute('data-cursor', 'hover');
+      btn.addEventListener('click', () => {
+        const isOpen = projEl.classList.toggle('is-expanded');
+        btn.textContent = isOpen ? 'Show fewer projects' : `Show all ${projects.length} projects`;
+        if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+      });
+      moreWrap.appendChild(btn);
+      projEl.parentElement.appendChild(moreWrap);
+    }
   }
 
   // Experience

@@ -26,6 +26,30 @@
     <meta property="og:url" content="https://cartix09.github.io/newprojectforportfolio/" />
 
     <link rel="canonical" href="https://cartix09.github.io/newprojectforportfolio/" />
+
+    <!-- Anti-FOUC: paint a dark background instantly, set theme before bundle loads -->
+    <style>
+      html, body { background: #05060a; color: #e7ecf3; margin: 0; }
+      html[data-theme="light"], html[data-theme="light"] body { background: #f4f1ec; color: #1a1d24; }
+    </style>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var theme;
+          if (saved === 'light' || saved === 'dark') {
+            theme = saved;
+          } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            theme = 'light';
+          } else {
+            theme = 'dark';
+          }
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
   </head>
 
   <body>
@@ -55,9 +79,27 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span>
-      </button>
+      <div class="nav-actions">
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle color theme"
+          aria-pressed="false"
+          data-cursor="hover"
+        >
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+          </svg>
+        </button>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
     </nav>
 
     <main id="top">
@@ -106,10 +148,6 @@
             <a class="btn btn-ghost" href="#contact" data-cursor="hover">Contact</a>
           </div>
 
-          <p class="hero-hint">
-            <span>Drag the shape</span>
-            <span class="hint-arrow">↘</span>
-          </p>
         </div>
 
         <div class="hero-meta">
@@ -220,14 +258,14 @@
 
             <a
               class="contact-link"
-              href="https://www.linkedin.com/in/mursal-hajiyev/"
+              href="https://www.linkedin.com/in/mursal-haciyev/"
               data-link="linkedin"
               target="_blank"
               rel="noreferrer noopener"
               data-cursor="hover"
             >
               <span class="contact-link-label">LinkedIn</span>
-              <span class="contact-link-value">in/mursal-hajiyev</span>
+              <span class="contact-link-value">in/mursal-haciyev</span>
             </a>
           </div>
         </div>
